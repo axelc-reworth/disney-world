@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('characters', {
+    queryInterface.createTable('characters', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -24,11 +24,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       pelicula_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'movie',
-          key: 'id'
-        }
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -38,6 +34,17 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
+    }).then(() => {
+      queryInterface.addConstraint('characters',  ["pelicula_id"], {
+        type: 'FOREIGN KEY',
+        name: 'FK_pelicula_id', // useful if using queryInterface.removeConstraint
+        references: {
+          table: 'movies',
+          field: 'id',
+        },
+        onDelete: 'no action',
+        onUpdate: 'no action',
+      })
     });
   },
   async down(queryInterface, Sequelize) {

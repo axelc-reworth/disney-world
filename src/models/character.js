@@ -11,11 +11,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      character.belongsTo(models.movie,
-        {
-          as: "pelicula_id",
-          foreignKey: "id"
-        })
     }
   }
   character.init({
@@ -26,11 +21,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     name: DataTypes.STRING,
-    imagen: DataTypes.STRING,
-    edad: DataTypes.NUMBER,
-    peso: DataTypes.FLOAT,
-    historia: DataTypes.TEXT,
-    pelicula_id: DataTypes.INTEGER,
+    image: DataTypes.STRING,
+    age: DataTypes.INTEGER,
+    weight: DataTypes.FLOAT,
+    story: DataTypes.TEXT,
+    movie_id: DataTypes.INTEGER,
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE
@@ -39,7 +34,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DATE
     }
-
   }, {
     sequelize,
     modelName: 'character',

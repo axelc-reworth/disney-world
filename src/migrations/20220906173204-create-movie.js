@@ -11,17 +11,23 @@ module.exports = {
       image: {
         type: Sequelize.STRING
       },
-      titulo: {
+      title: {
         type: Sequelize.STRING
       },
-      fecha: {
+      date: {
+        type: Sequelize.STRING
+      },
+      rating: {
+        type: Sequelize.INTEGER
+      },
+      character_id: {
+        type: Sequelize.INTEGER
+      },
+      createdAt: {
         type: Sequelize.DATE
       },
-      calificacion: {
-        type: Sequelize.INTEGER
-      },
-      personaje: {
-        type: Sequelize.INTEGER
+      updatedAt: {
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
